@@ -1,59 +1,38 @@
-pipeline{
-    agent{
-        kubernetes {
-            yaml '''
-            apiVersion: v1
-            kind: Pod
-            spec:
-            containers:
-            - name: maven
-                image: maven:alpine
-                command:
-                - cat
-                tty: true
-            - name: node
-                image: node:16-alpine3.12
-                command:
-                - cat
-                tty: true
-            '''
-        }
+pipeline {
+  agent {
+    kubernetes {
+      yaml '''
+        apiVersion: v1
+        kind: Pod
+        metadata:
+          labels:
+            some-label: some-label-value
+        spec:
+          containers:
+          - name: maven
+            image: maven:alpine
+            command:
+            - cat
+            tty: true
+          - name: busybox
+            image: busybox
+            command:
+            - cat
+            tty: true
+        '''
+      retries 2
     }
-    stages{
-        stage("Run Maven"){
-            steps{
-                echo "========executing A========"
-                steps {
-                    container('maven') {
-                        sh 'mvn -version'
-                    }
-                    container('node'){
-                        sh 'npm version'
-                    }
-                }
-            }
-            post{
-                always{
-                    echo "========always========"
-                }
-                success{
-                    echo "========A executed successfully========"
-                }
-                failure{
-                    echo "========A execution failed========"
-                }
-            }
+  }
+  stages {
+    stage('Run maven') {
+      steps {
+        container('maven') {
+          sh 'mvn -version'
         }
+        container('busybox') {
+          sh '/bin/busybox'
+        }
+      }
     }
-    post{
-        always{
-            echo "========always========"
-        }
-        success{
-            echo "========pipeline executed successfully ========"
-        }
-        failure{
-            echo "========pipeline execution failed========"
-        }
-    }
+  }
 }
