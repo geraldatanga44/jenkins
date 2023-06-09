@@ -4,7 +4,7 @@ podTemplate(containers: [
 ]) {
     node(POD_LABEL) {
         environment {
-            SOME_VAR = 'SOME VALUE'
+            SOME_VAR='SOME VALUE'
         }
 
             stage('Foo Ubuntu') {
