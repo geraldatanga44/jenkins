@@ -8,7 +8,7 @@ pipeline {
     agent none
 
     stages {
-        stage(name: 'Foo') {
+        stage('Foo') {
             steps {
                 sh(script: 'echo "SOME_VAR is $SOME_VAR"')
             }
