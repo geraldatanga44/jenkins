@@ -11,7 +11,8 @@ podTemplate(containers: [
             container('ubuntu') {
                 stage('check env vars') {
                     steps {
-                        sh "echo SOME_VAR is ${SOME_VAR}"
+                        sh 'cd /usr/bin'
+                        sh 'ls -la'
                     }
                 }
             }
