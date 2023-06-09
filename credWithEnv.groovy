@@ -6,12 +6,14 @@ pipeline {
     }
 
     agent {
-        any
+        none
     }
 
     stages {
         stage(name: 'Foo') {
-            sh(script: 'echo "SOME_VAR is $SOME_VAR"')
+            steps {
+                sh(script: 'echo "SOME_VAR is $SOME_VAR"')
+            }
         }
     }
 }
