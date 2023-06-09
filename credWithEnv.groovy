@@ -6,7 +6,7 @@ podTemplate(containers: [
         environment {
             SOME_VAR = 'SOME VALUE'
         }
-        stages {
+
             stage('Foo Ubuntu') {
                 container('ubuntu') {
                     stage('check env vars') {
@@ -14,6 +14,5 @@ podTemplate(containers: [
                     }
                 }
             }
-        }
     }
 }
