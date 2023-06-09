@@ -14,7 +14,7 @@ podTemplate(containers: [
                         sh "echo $SOME_VAR"
                         sh "echo $CRED1"
                         withCredentials([
-                            usernamePassword(credentialId: 'cred1',
+                            usernamePassword(credentialsId: 'cred1',
                             usernameVariable: 'username',
                             passwordVariable: 'password')
                         ]) {
