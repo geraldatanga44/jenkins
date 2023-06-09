@@ -10,7 +10,7 @@ podTemplate(containers: [
             stage('Foo Ubuntu') {
                 container('ubuntu') {
                     stage('check env vars') {
-                        sh(script: 'echo "SOME_VAR is $SOME_VAR')
+                        sh(script: 'echo "SOME_VAR is $SOME_VAR"')
                     }
                 }
             }
