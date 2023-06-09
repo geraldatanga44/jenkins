@@ -6,7 +6,7 @@ podTemplate(containers: [
         stage('Foo Ubuntu') {
             container('ubuntu') {
                 stage('check env vars') {
-                    sh 'cd ~'
+                    sh 'cd /'
                     sh 'ls -la'
                     withEnv(["SOME_VAR=SOME VAR"]) {
                         sh "echo $SOME_VAR"
