@@ -9,7 +9,8 @@ podTemplate(containers: [
                     sh 'touch file.txt'
                     sh 'cd $WORKSPACE_TMP'
                     sh 'ls -la'
-                    withEnv(["SOME_VAR=SOME VAR", "CRED1=${credentials('cred1')}"]) {
+                    def cred1 = crendentials('cred1')
+                    withEnv(["SOME_VAR=SOME VAR", "CRED1=${cred1}"]) {
                         sh "echo $SOME_VAR"
                         sh "echo $CRED1"
                     }
