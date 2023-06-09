@@ -17,6 +17,12 @@ pipeline {
                 sh "echo $INBETWEEN"
                 sh "echo $CRED2"
                 sh "echo $OTHER"
+
+                //credentials variables be masked but not archive to file
+                sh "echo $CRED1 > cred1.txt"
+                sh "echo $CRED2 > cred2.txt"
+
+                archive "**/*.txt"
             }
         }
     }
