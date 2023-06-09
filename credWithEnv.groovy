@@ -10,7 +10,7 @@ podTemplate(containers: [
         stage('Foo Ubuntu') {
             container('ubuntu') {
                 stage('check env vars') {
-                    sh 'cd /usr/bin'
+                    sh 'cd ~'
                     sh 'ls -la'
                 }
             }
