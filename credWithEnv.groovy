@@ -4,13 +4,15 @@ podTemplate(containers: [
 ]) {
     node(POD_LABEL) {
         environment {
-            SOME_VAR='SOME VALUE'
+            SOME_VAR = 'SOME VALUE'
         }
 
             stage('Foo Ubuntu') {
                 container('ubuntu') {
                     stage('check env vars') {
-                        sh "echo SOME_VAR is $SOME_VAR"
+                        steps {
+                            sh "echo SOME_VAR is $SOME_VAR"
+                        }
                     }
                 }
             }
