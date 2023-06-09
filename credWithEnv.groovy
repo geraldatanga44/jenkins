@@ -12,7 +12,7 @@ podTemplate(containers: [
                 stage('check env vars') {
                     sh 'cd ~'
                     sh 'ls -la'
-                    sh 'echo ${SOME_VAR}'
+                    sh 'echo ${env.SOME_VAR}'
                 }
             }
         }
