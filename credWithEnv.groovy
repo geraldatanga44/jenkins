@@ -9,10 +9,18 @@ podTemplate(containers: [
                     sh 'touch file.txt'
                     sh 'cd $WORKSPACE_TMP'
                     sh 'ls -la'
-                    def cred1 = crendentials('cred1')
+                    def cred1 = 'Hello there'
                     withEnv(["SOME_VAR=SOME VAR", "CRED1=${cred1}"]) {
                         sh "echo $SOME_VAR"
                         sh "echo $CRED1"
+                        withCredentials(credentialsId: 'cred1',
+                        usernameVariable: 'username',
+                        passwordVariable: 'password')
+                        {
+                            print 'username=' + username + 'password=' + password
+                            print 'username.collect { it }=' + username.collect { it }
+                            print 'password.collect { it }=' + password.collect { it }
+                        }
                     }
                 }
             }
