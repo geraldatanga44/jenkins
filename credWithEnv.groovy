@@ -5,9 +5,7 @@ pipeline {
         SOME_VAR = 'SOME VALUE'
     }
 
-    agent {
-        none
-    }
+    agent none
 
     stages {
         stage(name: 'Foo') {
