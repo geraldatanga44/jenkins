@@ -6,6 +6,7 @@ podTemplate(containers: [
         stage('Foo Ubuntu') {
             container('ubuntu') {
                 stage('check env vars') {
+                    sh 'touch file.txt'
                     sh 'cd $WORKSPACE_TMP'
                     sh 'ls -la'
                     withEnv(["SOME_VAR=SOME VAR"]) {
