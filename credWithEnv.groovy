@@ -4,16 +4,14 @@ podTemplate(containers: [
 ]) {
     node(POD_LABEL) {
         environment {
-            SOME_VAR="SOME VALUE"
+            SOME_VAR = 'SOME VALUE'
         }
 
         stage('Foo Ubuntu') {
             container('ubuntu') {
                 stage('check env vars') {
-                    steps {
-                        sh 'cd /usr/bin'
-                        sh 'ls -la'
-                    }
+                    sh 'cd /usr/bin'
+                    sh 'ls -la'
                 }
             }
         }
