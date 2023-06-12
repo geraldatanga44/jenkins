@@ -19,14 +19,14 @@ pipeline {
                 sh 'echo "FOO_PSW is $FOO_PSW"'
 
                 //write to fill
-                dir("combined") {
+                dir('combined') {
                     sh 'echo $FOO > foo.txt'
                 }
 
                 sh 'echo $FOO_PSW > foo_psw.txt'
                 sh 'echo $FOO_USR > foo_usr.txt'
 
-                archiveArtifacts "**/*.txt"
+                archiveArtifacts '**/*.txt'
             }
         }
     }
